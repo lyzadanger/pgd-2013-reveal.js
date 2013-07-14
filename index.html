@@ -91,8 +91,10 @@
 						<h4>After all, we're not just shoving a web site into an app...</h4>
 					</section>
 					<section>
-						<blockquote cite="http://phonegap.com/2012/05/09/phonegap-beliefs-goals-and-philosophy/">&ldquo;The web is decidedly not a first class development platform: opaque introspection, blunt tools, poor API surface area, and a rather limited set of GUI elements. The web has host of other problems...there are no silver bullets&rdquo;</blockquote>
-						<p><em>Also</em> Brian LeRoux</p>
+						<blockquote cite="http://phonegap.com/2012/05/09/phonegap-beliefs-goals-and-philosophy/">&ldquo;The web is decidedly not a first class development platform: opaque introspection, blunt tools, poor API surface area, and a rather limited set of GUI elements. The web has host of other problems...there are no silver bullets&rdquo;
+							<cite>Brian LeRoux</cite>
+
+						</blockquote>
 						<aside class="notes">At the same time...not a first-class...blunt...poor...limited...problems...no silver bullet. Crap.</aside>
 					</section>
 					<section>
@@ -170,7 +172,7 @@
 
 				<section>
 					<section data-transition="fade">
-						<h2>In My Brain The Web ~=</h2>
+						<h2>In My Brain The Web &asymp;</h2>
 						<h3 class="fragment">TCP/IP</h3>
 						<h3 class="fragment">+</h3>
 						<h3 class="fragment">HTTP</h3>
@@ -204,8 +206,9 @@
 					<section>
 						<h3>Im doin it rong</h3>
 						<p><em>e.g.</em></p>
-						<blockquote cite="http://lostechies.com/derickbailey/2011/08/03/stop-using-backbone-as-if-it-were-a-stateless-web-server/">Stop using backbone as it were a stateless web server.</blockquote>
-						<small>Derick Bailey</small>
+						<blockquote cite="http://lostechies.com/derickbailey/2011/08/03/stop-using-backbone-as-if-it-were-a-stateless-web-server/">Stop using backbone as it were a stateless web server.
+							<cite><a href="http://lostechies.com/derickbailey/2011/08/03/stop-using-backbone-as-if-it-were-a-stateless-web-server/">Derick Bailey</a></cite>
+					 </blockquote>
 						<aside class="notes">What does he mean by this? The over-reliance on routes and actually, as such, <em>navigating</em> to things.</aside>
 					</section>
 
@@ -273,30 +276,50 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 					<section>
 						<h3>The Client Has to Wrangle Data</h3>
 						<ul>
-							<li>Offline mode</li>
 							<li>Caching</li>
 							<li>Synching</li>
+							<li>Offline mode</li>
 						</ul>
 					</section>
 
 					<section>
-						<h3>I tried a lot of data adapters before I really settled down...</h3>
+						<h3>So what should we be doing about it?</h3>
+						<h5>(Having a bit of a think)</h5>
+					</section>
+
+					<section>
+						<h3>Wrangling Data: Caching</h3>
 						<ul>
-							<li>Right now, my paramour is <code><a href="https://github.com/lucian1900/Backbone.dualStorage">backbone.dualStorage</a></code></p></li>
-							<li>I, for one, am rather fond of simple, dull old <code>localStorage</code></li>
+							<li>Default to keeping stuff locally</li>
+							<li>Be mindful of <code>localStorage</code> or other quotas</li>
+							<li>Don't <em>depend</em> on <code>localStorage</code></li>
+							<li>Lots of stuff? You probably want to use <code><a href="https://developer.mozilla.org/en-US/docs/IndexedDB">IndexedDB</a></code> or something cool like that.</li>
 						</ul>
 					</section>
 
 					<section>
-						<h3>What I learned</h3>
-
+						<h3>Wrangling Data: Synching</h3>
+						<p>Your models are dirty, dirty, dirty</p>
 						<ul>
-							<li>Don't try to solve this problem on your own</li>
-							<li>Keep stuff around</li>
-							<li>Make it behave exactly the same as remote sync</li>
+							<li>Synching local dirty data and doing a good job of it is a non-trivial problem</li>
+							<li>I'm not smart enough to tackle it myself, so I use things like <code><a href="https://github.com/lucian1900/Backbone.dualStorage">backbone.dualStorage</a></code></li>
+							<li>Make it behave RESTfully just like remote sync</li>
+							<li>Nervous? You might consider readonly for local</li>
 						</ul>
 					</section>
 
+					<section>
+						<h3>Wrangling Data: Offline Mode</h3>
+						<p>Finally a bit of good news: build your data wrangling carefully, and offline mode can follow naturally.</p>
+						<p class="fragment">If you want a bit more control:</p>
+						<pre class="fragment"><code data-trim contenteditable>
+// Hold that thought
+document.addEventListener("offline", nobodyIsAnswering, false);
+// Oh, we're all talking again!
+document.addEventListener("online", hiThereHeresWhatChanged, false);
+						 </pre></code>
+					  </p>
+					 </section>
 				</section>
 
 				<section>
@@ -333,8 +356,8 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 					<section>
 						<h3>O, Woe, It's Changed my Reality</h3>
 						<blockquote>&ldquo;Blah, blah, blah, <em>user expectations</em>, 
-							blah blah blah <em>native metaphors</em>, blah blah blah&rdquo;</blockquote>
-						<p>Everyone</p>
+							blah blah blah <em>native metaphors</em>, blah blah blah&rdquo;
+							<cite>Everyone</cite></blockquote>
 					</section>
 					<section>
 						<h3>Navigation</h3>
@@ -346,7 +369,7 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 					</section>
 					<section>
 						<h3>Interface</h3>
-						<p>A random assortment of things you now need to know and care about:</p>
+						<p>Here is one random example of things you now need to know and care about:</p>
 						<ul>
 							<li>Keyboards
 								<ul>
@@ -380,10 +403,21 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 					  	<li>Finicky QA of interface elements</li>
 					  </ul>
 					 </section>
-
 					<section>
-						<h3>Putting this together</h3>
+						<h3>Putting it together</h3>
+						<ul>
+							<li class="fragment roll-in">Non-linear navigation</li>
+							<li class="fragment roll-in">Tap delay acceleration</li>
+							<li class="fragment roll-in">State management</li>
+							<li class="fragment roll-in">Memory management/care</li>
+							<li class="fragment roll-in">Platform-specific keyboard optimization</li>
+						</ul>
 					</section>
+
+				</section>
+
+				<section>
+					<video src="assets/navigation.mp4" data-autoplay></video>
 				</section>
 
 				<section>
@@ -409,6 +443,9 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 					</section>
 					<section>
 						<h3>Testing is <em>All</em> Different</h3>
+						<ul>
+							<li>Testing and debug is light years easier in the browser</li>
+						</ul>
 					</section>
 				</section>
 
@@ -418,6 +455,19 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 					</section>
 					<section>
 						<h3>Getting in front of things</h3>
+					</section>
+					<section>
+						<h3>Stay in the browser whenever you can</h3>
+					</section>
+					<section>
+						<h3>Apply Progressive Enhancement Ideals</h3>
+							<ul>
+								<li>Feature detection carries over to native applications</li>
+								<li>There isn't a clear line between browser and native</li>
+							</ul>
+					</section>
+					<section>
+						<h3>Assume nothing works until you see it on device</h3>
 					</section>
 					<section>
 						<h3>Keeping your eyes on a few core tenets</h3>
@@ -443,7 +493,7 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 				history: true,
 				center: true,
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				theme: Reveal.getQueryHash().theme || 'cloudfour-dark', // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
 				// Optional libraries used to extend on reveal.js
