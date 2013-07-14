@@ -95,6 +95,7 @@
 					</section>
 				</section>
 
+				<!-- So, what am I after? -->
 
 				<section>
 					<section>
@@ -104,7 +105,7 @@
 						<h4>Things are going pretty great!</h4>
 					</section>
 					<section>
-						<h2>My Li'l First PhoneGap Project!(tm)</h2>
+						<h3>My Li'l First PhoneGap Project!(tm)</h3>
 						<ol>
 							<li>Set up my project in XCode!</li>
 							<li>Drop PhoneGap in!</li>
@@ -129,42 +130,249 @@
 					</section>
 					<section>
 						<h3>Core Web Concepts</h3>
-						<p>Adherence to certain core web concepts can get us in trouble. Some things we have long held to be Absolutely The Way are different in the app world, subtlely or extremely.</p>
+						<p>Adherence to certain core web <span class="fragment highlight-red">concepts</span> can get us in trouble. Some things we have long held to be Absolutely The Way are different in the app world, subtlely or extremely.</p>
+						<aside class="notes">I'm not talking about web <em>standards</em>, I'm talking about web <em>concepts</em>.</aside>
 					</section>
 					<section>
 						<h3>Nuance and Best Practices</h3>
-						<p>Like it or not, we're on device in a native context.</p>
+						<p>Like it or not, we're <span class="fragment highlight-red">on device</span> in a native context.</p>
+						<aside class="notes">On more than likely a <em>specific</em> device or devices. And because of that, we're beholden...</aside>
 					</section>
 					<section>
-						<h3>Process and Tools</h3>
-						<p>A simple text editor won't get you all the way there, you have to build this thing and testing is freaking hard.</p>
+						<h3>Process, Components and Tools</h3>
+						<ul>
+							<li class="fragment">A simple text editor won't get you all the way there</li>
+							<li class="fragment">You have to build this thing</li>
+							<li class="fragment">...and you have to decide what to build it <em>with</em></li>
+							<li class="fragment">Also, testing is hard</li>
+						</ul>
 					</section>
 					<section>
 						<h3>Complexity</h3>
-						<p>And these problems compound as your app grows.</p>
+						<p>And these problems <span class="fragment highlight-red">compound</span> as your app grows.</p>
+						<aside class="notes">So, get out in front of it</aside>
 					</section>
 				</section>
 
 				<section>
-					<h2>A bit of self-defense</h2>
+					<h1>A bit of self-defense</h1>
+					<aside class="notes">Learning to apply web concepts in a different metaphor</aside>
+				</section>
+
+				<section>
+					<h2>Defending yourself</h2>
+					<h3>Certain Web Concepts Fall Down a bit</h3>
+				</section>
+
+				<section>
+					<section data-transition="fade">
+						<h2>In My Brain The Web ~=</h2>
+						<h3 class="fragment">TCP/IP</h3>
+						<h3 class="fragment">+</h3>
+						<h3 class="fragment">HTTP</h3>
+						<h3 class="fragment">+</h3>
+					  <h3 class="fragment">User Agent</h3>
+					</section>
+					<section data-transition="none">
+						<h2>&nbsp;</h2>
+						<h3>&nbsp;</h3>
+						<h3>&nbsp;</h3>
+						<h3>HTTP</h3>
+						<h3 class="fragment">HTTP is a <span class="fragment highlight-red">stateless</span> protocol.</h3>
+						<h3>&nbsp;</h3>
+					</section>
+					<section data-transition="zoom">
+						<h3>State<span class="fragment fade-out">less</span></h3>
+						<p class="fragment">In the application context—especially the non-browser context—we suddenly have state. In spades. To manage.</p>
+						<aside class="notes">Application lifecycle is no longer such a simple, stateless, request-response story. Instead we're managing the application over time...</aside>
+					</section>
+
+					<section>
+						<h4>Yeah, yeah, yeah</h4>
+						<div class="fragment">
+							<h3>Welcome to JavaScript Applications</h3>
+							<p>This isn't exactly a brand-new concern.</p>
+							<p>But it is intensified in the native application context.</p>
+							<p>And I urge you to sit down and give it a bit of a think.</p>
+						</div>
+					</section>
+
+					<section>
+						<h3>Im doin it rong</h3>
+						<p><em>e.g.</em></p>
+						<blockquote cite="http://lostechies.com/derickbailey/2011/08/03/stop-using-backbone-as-if-it-were-a-stateless-web-server/">Stop using backbone as it were a stateless web server.</blockquote>
+						<small>Derick Bailey</small>
+						<aside class="notes">What does he mean by this? The over-reliance on routes and actually, as such, <em>navigating</em> to things.</aside>
+					</section>
+
+					<section>
+						<h3>So what should we be doing about it?</h3>
+						<h5>(Having a bit of a think)</h5>
+					</section>
+
+					<section>
+						<h3>Think through the lifecycle</h3>
+						<p>Know your events and how the app will live in its context</p>
+						<p>
+							<pre><code data-trim contenteditable>
+// Hold that thought
+document.addEventListener("pause", hangOnForAWhile, false);
+// Oh, we're back!
+document.addEventListener("resume", ohGodWhereWasI, false);
+						  </pre></code>
+					  </p>
+					</section>
+
+					<section>
+						<h3>Differentiate between URL-addressable state history and routing</h3>
+						<p>You can push things into state history without actually routing.</p>
+						<aside class="notes">A compromise between URL-addressable places in state history and maintaining state for now</aside>
+					</section>
+
+					<!-- #TODO Managing memory/views! -->
+
 				</section>
 
 				<section>
 					<section>
-						<h2>Certain Web Concepts Fall Down</h2>
+						<h2>Persistence and Data</h2>
+						<p>It's not just for web servers anymore</p>
+					</section>
+					<section>
+						<h3>The Old Way</h3>
+						<dl>
+							<dt>Application</dt>
+							<dd>Hay, API on server, tell me about <code>thing/42</code></dd>
+
+							<dt>API</dt>
+							<dd>Sure, here you go!</dd>
+
+							<dt>Application</dt>
+							<dd>Thanks! I'd be helpless without you!</dd>
+						</dl>
+					</section>
+					<section>
+						<h3>A Modern Interpretation</h3>
+						<dl>
+							<dt>Application</dt>
+							<dd>Actually, API, I already have my own version of what <code>thing/42</code> looks like.</dd>
+						
+							<dt>API</dt>
+							<dd>...</dd>
+
+							<dt>Application</dt>
+							<dd>...So, API, my version of what <code>thing/42</code> looks like has changed a bit while we weren't talking while my user was going through that last tunnel? Anyway, here's a patch of what I changed. Deal with it.</dd>
+
+							<dt>API</dt>
+							<dd>!!</dd>
+						</dl>
+					</section>
+
+					<section>
+						<h3>The Client Has to Wrangle Data</h3>
+						<ul>
+							<li>Offline mode</li>
+							<li>Caching</li>
+							<li>Synching</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>I tried a lot of data adapters before I really settled down...</h3>
+						<ul>
+							<li>Right now, my paramour is <code><a href="https://github.com/lucian1900/Backbone.dualStorage">backbone.dualStorage</a></code></p></li>
+							<li>I, for one, am rather fond of simple, dull old <code>localStorage</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>What I learned</h3>
+
+						<ul>
+							<li>Don't try to solve this problem on your own</li>
+							<li>Keep stuff around</li>
+							<li>Make it behave exactly the same as remote sync</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+						## HTML "Documents"
+						```
+							<!doctype html>
+							<html>
+							<head>
+							  <title>My Really Great Applimacation</title>
+							</head>
+							<body>
+								<!-- I am so lonely -->
+							</body>
+							</html>
+						```
+
+						I still have some heartache over this.
+
+						</script>
 					</section>
 				</section>
+
+				<section>
+					<h2>Bravely Onward, O Web Developers!</h2>
+				</section>
+
 				<section>
 					<section>
-						<h2>In My Reality:</h2>
-						<h3 class="fragment">The Web ~= 
-							<span class="fragment">TCP/IP</span>
-							<span class="fragment"> + HTTP</span>
-							<span class="fragment"> + User Agent</span>
-						</h3>
+						<h2>Nuance and Context</h2>
 					</section>
-					
+					<section>
+						<h3>O, Woe, It's Changed my Reality</h3>
+						<ul>
+							<li>Navigation</li>
+							<li>Interface</li>
+							<li>Control</li>
+						</ul>
+					</section>
+				</section>
+
 				<section>
+					<section>
+						<h2>Process, Components and Tools</h2>
+					</section>
+					<section>
+						<h3>Suddenly You Have to Care about a lot of Minutiae</h3>
+						<ul>
+							<li>Frameworks</li>
+							<li>Libraries</li>
+							<li>Config</li>
+							<li>Build</li>
+							<li>SDKs</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Your Workflow Matters</h3>
+					</section>
+					<section>
+						<h3>Choosing your stack</h3>
+					</section>
+					<section>
+						<h3>Testing is <em>All</em> Different</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Complexity</h2>
+					</section>
+					<section>
+						<h3>Getting in front of things</h3>
+					</section>
+					<section>
+						<h3>Keeping your eyes on a few core tenets</h3>
+					</section>
+				</section>
 
 
 			</div>
@@ -197,7 +405,12 @@
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
 					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
+				],
+				keyboard: {
+					48: function() { // Go to first slide when 0 pressed
+						Reveal.slide(0);
+					}
+				}
 			});
 
 		</script>
