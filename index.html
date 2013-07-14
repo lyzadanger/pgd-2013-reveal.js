@@ -50,10 +50,12 @@
 						<h2>Let's Start from the Top</h2>
 						<p>I'm a web developer. So when I first saw:</p>
 						<blockquote cite="http://phonegap.com/">&ldquo;PhoneGap is a free and open source framework that allows you to create mobile 	apps using standardized web APIs for the platforms you care about.&rdquo;</blockquote>
+						<aside class="notes">When I first met PhoneGap, I was all won over by its goals.</aside>
 					</section>
 					<section>
 						<h3>Aw, hell yeah</h3>
 						<p><em>This is for <strong>me</strong></em>!</p>
+						<aside class="notes">I'm a web developer who loves mobile and, wow, this is going to be just my style</aside>
 					</section>
 				</section>
 
@@ -70,9 +72,11 @@
 					<section>
 						<blockquote cite="http://phonegap.com/2012/05/09/phonegap-beliefs-goals-and-philosophy/">&ldquo;The ultimate purpose of PhoneGap is to cease to exist&rdquo;</blockquote>
 						<p>Brian LeRoux</p>
+						<aside class="notes">I think it was this stated goal of PhoneGap from early on that really made me infatuated with it</aside>
 					</section>
 					<section>
 						<h3>Ooooooh.</h3>
+						<aside class="notes">The idea of the web as a uniting, first-class platform for making apps, using standards. And PhoneGap would simply, gently step aside when it wasn't needed anymore. Hot damn.</aside>
 					</section>
 				</section>
 
@@ -89,6 +93,7 @@
 					<section>
 						<blockquote cite="http://phonegap.com/2012/05/09/phonegap-beliefs-goals-and-philosophy/">&ldquo;The web is decidedly not a first class development platform: opaque introspection, blunt tools, poor API surface area, and a rather limited set of GUI elements. The web has host of other problems...there are no silver bullets&rdquo;</blockquote>
 						<p><em>Also</em> Brian LeRoux</p>
+						<aside class="notes">At the same time...not a first-class...blunt...poor...limited...problems...no silver bullet. Crap.</aside>
 					</section>
 					<section>
 						<small><em>Oh.</em></small>
@@ -100,26 +105,25 @@
 				<section>
 					<section>
 						<h2>Bravely Onward, O Web Developers!</h2>
+						<aside class="notes">But no matter! This is going to be awesome</aside>
 					</section>
 					<section>
 						<h4>Things are going pretty great!</h4>
+						<aside class="notes">I have embarked on my new career as an app builder</aside>
 					</section>
 					<section>
 						<h3>My Li'l First PhoneGap Project!(tm)</h3>
 						<ol>
-							<li>Set up my project in XCode!</li>
-							<li>Drop PhoneGap in!</li>
-							<li>Add a simple plugin!</li>
-							<li>Build!</li>
-							<li>Everything works! I AM APP DEVELOPER!</li>
+							<li class="fragment">Set up my project in XCode!</li>
+							<li class="fragment">Drop PhoneGap in!</li>
+							<li class="fragment">Add a simple plugin!</li>
+							<li class="fragment">Build!</li>
+							<li class="fragment">Everything works! I AM APP DEVELOPER!</li>
 						</ol>
 					</section>
 					<section>
 						<p>It's pretty great!</p>
-						<p class="fragment">...at first</p>
-					</section>
-					<section>
-						<h4>And then things went a bit pear-shaped</h4>
+						<p class="fragment roll-in">...at first</p>
 					</section>
 				</section>
 
@@ -135,7 +139,7 @@
 					</section>
 					<section>
 						<h3>Nuance and Best Practices</h3>
-						<p>Like it or not, we're <span class="fragment highlight-red">on device</span> in a native context.</p>
+						<p>Like it or not, we're <span class="fragment highlight-red">on device</span> in a <span class="fragment highlight-red">native context</span>.</p>
 						<aside class="notes">On more than likely a <em>specific</em> device or devices. And because of that, we're beholden...</aside>
 					</section>
 					<section>
@@ -229,8 +233,6 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 						<aside class="notes">A compromise between URL-addressable places in state history and maintaining state for now</aside>
 					</section>
 
-					<!-- #TODO Managing memory/views! -->
-
 				</section>
 
 				<section>
@@ -308,7 +310,7 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 							  <title>My Really Great Applimacation</title>
 							</head>
 							<body>
-								<!-- I am so lonely -->
+								<!-- The emptiness of my existence is killing me -->
 							</body>
 							</html>
 						```
@@ -325,21 +327,69 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 
 				<section>
 					<section>
-						<h2>Nuance and Context</h2>
+						<h2>Defending yourself</h2>
+						<h3>Nuance and Context</h3>
 					</section>
 					<section>
 						<h3>O, Woe, It's Changed my Reality</h3>
+						<blockquote>&ldquo;Blah, blah, blah, <em>user expectations</em>, 
+							blah blah blah <em>native metaphors</em>, blah blah blah&rdquo;</blockquote>
+						<p>Everyone</p>
+					</section>
+					<section>
+						<h3>Navigation</h3>
 						<ul>
-							<li>Navigation</li>
-							<li>Interface</li>
-							<li>Control</li>
+							<li>Navigation is often, by necessity, multi-tracked and non-linear</li>
+							<li><code>forward</code> and <code>backward</code> are sometimes not enough</li>
+							<li>This ties in with state</li>
 						</ul>
+					</section>
+					<section>
+						<h3>Interface</h3>
+						<p>A random assortment of things you now need to know and care about:</p>
+						<ul>
+							<li>Keyboards
+								<ul>
+									<li>Soft or hard?</li>
+									<li>How to trigger?</li>
+									<li>How to get the right one?</li>
+									<li>How to make it go away?</li>
+									<li>How big is it? How has it affected the viewport?</li>
+									<li>How to add a magic-y submit button-y thing</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>MOAR Interface</h3>
+						<p>It is up to you, intrepid developer, to make sure that things behave acceptably.</p>
+						<p>e.g.</p>
+						<ul>
+							<li><code><a href="https://github.com/ftlabs/fastclick">fastclick.js</a></code> for eliminating 300ms tap delays</li>
+							<li><code><a href="https://github.com/j-mcnally/cordova-statusTap">statusTap</a></code> plugin</li>
+							<li>Various plugins for making third-party social authentication tolerable</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Lower-level concerns</h3>
+					  <p>Long-running native apps emphasize the need for</p>
+					  <ul>
+					  	<li>Managing memory and watching for leaks</li>
+					  	<li>Retaining and managing state</li>
+					  	<li>Finicky QA of interface elements</li>
+					  </ul>
+					 </section>
+
+					<section>
+						<h3>Putting this together</h3>
 					</section>
 				</section>
 
 				<section>
 					<section>
-						<h2>Process, Components and Tools</h2>
+						<h2>Defending Yourself</h2>
+						<h3>Process, Components and Tools</h3>
 					</section>
 					<section>
 						<h3>Suddenly You Have to Care about a lot of Minutiae</h3>
@@ -371,6 +421,7 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 					</section>
 					<section>
 						<h3>Keeping your eyes on a few core tenets</h3>
+						<p>A lot of this comes down to allotting yourself more time and being gentle with yourself.</p>
 					</section>
 				</section>
 
