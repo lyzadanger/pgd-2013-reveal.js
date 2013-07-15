@@ -1,90 +1,136 @@
-/**
- * Default theme for reveal.js.
- *
- * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
- */
-
-
 // Default mixins and settings -----------------
 @import "../template/mixins";
 @import "../template/settings";
 // ---------------------------------------------
 
-// For now, using Default theme's basics
-// Include theme-specific fonts
-@font-face {
-  font-family: 'League Gothic';
-  src: url('../../lib/font/league_gothic-webfont.eot');
-  src: url('../../lib/font/league_gothic-webfont.eot?#iefix') format('embedded-opentype'),
-     url('../../lib/font/league_gothic-webfont.woff') format('woff'),
-     url('../../lib/font/league_gothic-webfont.ttf') format('truetype'),
-     url('../../lib/font/league_gothic-webfont.svg#LeagueGothicRegular') format('svg');
-
-  font-weight: normal;
-  font-style: normal;
-}
-
-//@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+// Fonts ---------------------------------------
 @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700,300,200);
 @import url(http://fonts.googleapis.com/css?family=BenchNine:300,400,700);
+// ---------------------------------------------
 
 // Override theme settings (see ../template/settings.scss)
-//$heading1TextShadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 20px 20px rgba(0,0,0,.15);
-$headingTextShadow: 0px 2px 6px rgba(0,0,0,0.5);
+$backgroundColor: desaturate(darken(#709ad0, 25%), 10%);
 $mainFont: 'Yanone Kaffeesatz', sans-serif;
-$headingFont: 'BenchNine';
 $mainFontSize: 40px;
+$headingFont: 'BenchNine';
+$headingTextShadow: 0px 2px 6px rgba(0,0,0,0.4);
+$heading1TextShadow: $headingTextShadow;
+$linkColor: #fff;
+$linkColorHover: rgba(#fff, 0.6);
+$selectionBackgroundColor: desaturate(darken(#709ad0, 25%), 10%);
+$selectionColor: #fff;
 
-// Background generator
+// Body background with SVG clouds and gradient
+@mixin cloudFourBackgroundImage($outer, $inner) {
+  background: $outer;
+  background-image: url('/assets/cloud.svg'), url('/assets/cloud.svg'), -moz-radial-gradient( center, $inner 0%, $outer 100% );
+  background-image: url('/assets/cloud.svg'), url('/assets/cloud.svg'), -webkit-gradient( radial, center center, 0px, center center, 100%, color-stop(0%,$inner), color-stop(100%,$outer) );
+  background-image: url('/assets/cloud.svg'), url('/assets/cloud.svg'), -webkit-radial-gradient( center, $inner 0%, $outer 100% );
+  background-image: url('/assets/cloud.svg'), url('/assets/cloud.svg'), -o-radial-gradient( center, $inner 0%, $outer 100% );
+  background-image: -ms-radial-gradient( center, $inner 0%, $outer 100% );
+  background-image: url('/assets/cloud.svg'), url('/assets/cloud.svg'), radial-gradient( center, $inner 0%, $outer 100% );
+}
 @mixin bodyBackground() {
-  @include radial-gradient( rgba(12,15,13,1), rgba(65,70,65,1));
-  //@include radial-gradient( rgba(28,30,32,1), rgba(85,90,95,1) );
+  @include cloudFourBackgroundImage($backgroundColor, lighten($backgroundColor, 25%));
+  background-repeat: no-repeat;
+  background-position: -25% 120%, 125% 120%, center;
+  background-size: 40% auto, 40% auto, cover;
 }
 
-/**
-Overrides
-**/
-
+// Overrides
 .reveal {
-  text-shadow: 0px 0px 4px rgba(0,0,0,0.4);
+  text-shadow: 0 1px 2px rgba(#000, 0.3);
 }
-
 .reveal h1 {
+  font-size: 4.5em;
   font-style: italic;
 }
-// Reveal doesn't have any styling for <dl>s
 
+// Definition lists
 .reveal dl {
+  margin-top: 20px;
   text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 1px 2px rgba(#000, 0.2);
+  padding: 15px 20px;
+}
+.reveal dt,
+.reveal dd {
+  margin-bottom: 20px;
 }
 .reveal dt {
+  float: left;
   text-transform: uppercase;
-  margin-top: 20px;
+  &:after {
+    content: ':';
+  }
 }
 .reveal dd {
-  font-size: 0.85em;
-  font-style: italic;
-  padding: 5px 10px;
-  // Copied from .reveal blockquote in reveal.css
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0px 0px 2px rgba(0,0,0,0.2);
-
+  margin-left: 22%;
 }
 
-.reveal blockquote cite {
+// Quotes and citations
+.reveal blockquote {
+  box-shadow: 0 1px 2px rgba(#000, 0.2);
+  font-style: normal;
+  padding: 10px 24px;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+.reveal blockquote:before {
+  content: '\201C';
+}
+.reveal blockquote:after {
+  content: '\201D';
+}
+// .reveal blockquote cite,
+.reveal .citation {
   display: block;
-  font-style: italic;
-  text-align: right;
-  margin-right: 10px;
   font-size: 0.85em;
+  margin: 5px auto;
+  text-align: right;
+  width: 70%;
+}
+// .reveal blockquote cite::before,
+.reveal .citation::before {
+  content: '— ';
 }
 
-.reveal blockquote cite::before {
-  content: '—';
+// Code output
+.reveal pre code {
+  background-color: rgba(#000, 0.6);
 }
 
+// Custom highlight style
+.reveal .slides section .fragment.highlight-cloudfour {
+  background-color: rgba(#fff, 0);
+  border-radius: 0.125em;
+  opacity: 1;
+  padding-left: 8px;
+  padding-right: 8px;
+  transition: all 250ms ease-out;
+}
+.reveal .slides section .fragment.highlight-cloudfour.visible {
+  background-color: rgba(#fff, 1);
+  color: #ff5f25;
+  text-shadow: none;
+}
 
+// Logo
+.reveal section img.logo {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  margin-top: -4%;
+  width: 40%;
+}
 
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
+
+// Progress bar color
+.reveal .progress {
+  background-color: rgba(#fff, 0.2);
+}
