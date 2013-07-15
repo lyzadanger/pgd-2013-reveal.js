@@ -24,20 +24,34 @@
   font-style: normal;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+//@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700,300,200);
+@import url(http://fonts.googleapis.com/css?family=BenchNine:300,400,700);
 
 // Override theme settings (see ../template/settings.scss)
-$heading1TextShadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 20px 20px rgba(0,0,0,.15);
+//$heading1TextShadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 20px 20px rgba(0,0,0,.15);
+$headingTextShadow: 0px 2px 6px rgba(0,0,0,0.5);
+$mainFont: 'Yanone Kaffeesatz', sans-serif;
+$headingFont: 'BenchNine';
+$mainFontSize: 40px;
 
 // Background generator
 @mixin bodyBackground() {
-  @include radial-gradient( rgba(28,30,32,1), rgba(85,90,95,1) );
+  @include radial-gradient( rgba(12,15,13,1), rgba(65,70,65,1));
+  //@include radial-gradient( rgba(28,30,32,1), rgba(85,90,95,1) );
 }
 
 /**
 Overrides
 **/
 
+.reveal {
+  text-shadow: 0px 0px 4px rgba(0,0,0,0.4);
+}
+
+.reveal h1 {
+  font-style: italic;
+}
 // Reveal doesn't have any styling for <dl>s
 
 .reveal dl {
@@ -68,6 +82,8 @@ Overrides
 .reveal blockquote cite::before {
   content: '—';
 }
+
+
 
 // Theme template ------------------------------
 @import "../template/theme";
