@@ -49,7 +49,7 @@
 					<section>
 						<h2>Let's Start from the Top</h2>
 						<p>I'm a web developer. So when I first saw:</p>
-						<blockquote cite="http://phonegap.com/">PhoneGap is a free and open source framework that allows you to create mobile 	apps using standardized web APIs for the platforms you care about.</blockquote>
+						<blockquote class="fragment" cite="http://phonegap.com/">PhoneGap is a free and open source framework that allows you to create mobile apps using standardized <span class="fragment highlight-cloudfour">web</span> APIs for the platforms you care about.</blockquote>
 						<aside class="notes">When I first met PhoneGap, I was all won over by its goals.</aside>
 					</section>
 					<section>
@@ -91,7 +91,7 @@
 						<h4>After all, we're not just shoving a web site into an app...</h4>
 					</section>
 					<section>
-						<blockquote cite="http://phonegap.com/2012/05/09/phonegap-beliefs-goals-and-philosophy/">The web is decidedly not a first class development platform: opaque introspection, blunt tools, poor API surface area, and a rather limited set of GUI elements. The web has host of other problems...there are no silver bullets
+						<blockquote cite="http://phonegap.com/2012/05/09/phonegap-beliefs-goals-and-philosophy/">The web is decidedly <span class="fragment highlight-cloudfour">not</span> a <span class="fragment highlight-cloudfour">first class</span> development platform: <span class="fragment highlight-cloudfour">opaque</span> introspection, <span class="fragment highlight-cloudfour">blunt</span> tools, <span class="fragment highlight-cloudfour">poor API</span> surface area, and a rather <span class="fragment highlight-cloudfour">limited</span> set of GUI elements. The web has host of other <span class="fragment highlight-cloudfour">problems</span>...there are no silver bullets.
 						</blockquote>
 						<p class="citation">Brian LeRoux</p>
 						<aside class="notes">At the same time...not a first-class...blunt...poor...limited...problems...no silver bullet. Crap.</aside>
@@ -220,7 +220,7 @@
 						<h3>Think through the lifecycle</h3>
 						<p>Know your events and how the app will live in its context</p>
 						<p>
-							<pre><code data-trim contenteditable>
+							<pre class="fragment"><code data-trim contenteditable>
 // Hold that thought
 document.addEventListener("pause", hangOnForAWhile, false);
 // Oh, we're back!
@@ -289,10 +289,10 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 					<section>
 						<h3>Wrangling Data: Caching</h3>
 						<ul>
-							<li>Default to keeping stuff locally</li>
-							<li>Be mindful of <code>localStorage</code> or other quotas</li>
-							<li>Don't <em>depend</em> on <code>localStorage</code></li>
-							<li>Lots of stuff? You probably want to use <code><a href="https://developer.mozilla.org/en-US/docs/IndexedDB">IndexedDB</a></code> or something cool like that.</li>
+							<li class="fragment">Default to keeping stuff locally</li>
+							<li class="fragment">But: be mindful of <code>localStorage</code> or other quotas</li>
+							<li class="fragment">Don't <em>depend</em> on <code>localStorage</code></li>
+							<li class="fragment">Lots of stuff? You probably want to use <code><a href="https://developer.mozilla.org/en-US/docs/IndexedDB">IndexedDB</a></code> or something cool like that.</li>
 						</ul>
 					</section>
 
@@ -300,24 +300,25 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 						<h3>Wrangling Data: Synching</h3>
 						<p>Your models are dirty, dirty, dirty</p>
 						<ul>
-							<li>Synching local dirty data and doing a good job of it is a non-trivial problem</li>
-							<li>I'm not smart enough to tackle it myself, so I use things like <code><a href="https://github.com/lucian1900/Backbone.dualStorage">backbone.dualStorage</a></code></li>
-							<li>Make it behave RESTfully just like remote sync</li>
-							<li>Nervous? You might consider readonly for local</li>
+							<li class="fragment">Synching local dirty data and doing a good job of it is a non-trivial problem</li>
+							<li class="fragment">I'm not smart enough to tackle it myself, so I use things like <code><a href="https://github.com/lucian1900/Backbone.dualStorage">backbone.dualStorage</a></code></li>
+							<li class="fragment">Make it behave RESTfully just like remote sync</li>
+							<li class="fragment">Nervous? You might consider readonly for local</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Wrangling Data: Offline Mode</h3>
-						<p>Finally a bit of good news: build your data wrangling carefully, and offline mode can follow naturally.</p>
-						<p class="fragment">If you want a bit more control:</p>
-						<pre class="fragment"><code data-trim contenteditable>
+						<p>Finally a bit of good news: build your data wrangling carefully<span class="fragment" data-fragment-index="3">*</span>, and offline mode can follow naturally.</p>
+						<p class="fragment" data-fragment-index="1">If you want a bit more control:</p>
+						<pre class="fragment" data-fragment-index="2"><code data-trim contenteditable>
 // Hold that thought
 document.addEventListener("offline", nobodyIsAnswering, false);
 // Oh, we're all talking again!
 document.addEventListener("online", hiThereHeresWhatChanged, false);
 						 </pre></code>
 					  </p>
+					  <p class="fragment" data-fragment-index="4"><small>* Remember what I said about designing client storage patterns after RESTful remote sync?</small></p>
 					 </section>
 				</section>
 
@@ -361,23 +362,24 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 					<section>
 						<h3>Navigation</h3>
 						<ul>
-							<li>Navigation is often, by necessity, multi-tracked and non-linear</li>
-							<li><code>forward</code> and <code>backward</code> are sometimes not enough</li>
-							<li>This ties in with state</li>
+							<li class="fragment">Navigation is often, by necessity, multi-tracked and non-linear</li>
+							<li class="fragment"><code>forward</code> and <code>backward</code> are sometimes not enough</li>
+							<li class="fragment">This ties in with our other friendly battle, state</li>
 						</ul>
 					</section>
 					<section>
 						<h3>Interface</h3>
 						<p>Here is one random example of things you now need to know and care about:</p>
-						<ul>
+						<ul class="fragment">
 							<li>Keyboards
 								<ul>
-									<li>Soft or hard?</li>
-									<li>How to trigger?</li>
-									<li>How to get the right one?</li>
-									<li>How to make it go away?</li>
-									<li>How big is it? How has it affected the viewport?</li>
-									<li>How to add a magic-y submit button-y thing</li>
+									<li class="fragment">Soft or hard?</li>
+									<li class="fragment">How to trigger?</li>
+									<li class="fragment">How to get the right one?</li>
+									<li class="fragment">How to make it go away?</li>
+									<li class="fragment">How big is it?</li>
+									<li class="fragment">How has its appearance affected the viewport?</li>
+									<li class="fragment">How to add a magic-y submit button-y thing</li>
 								</ul>
 							</li>
 						</ul>
@@ -387,19 +389,26 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 						<p>It is up to you, intrepid developer, to make sure that things behave acceptably.</p>
 						<p>e.g.</p>
 						<ul>
-							<li><code><a href="https://github.com/ftlabs/fastclick">fastclick.js</a></code> for eliminating 300ms tap delays</li>
-							<li><code><a href="https://github.com/j-mcnally/cordova-statusTap">statusTap</a></code> plugin</li>
-							<li>Various plugins for making third-party social authentication tolerable</li>
+							<li class="fragment"><code><a href="https://github.com/ftlabs/fastclick">fastclick.js</a></code> for eliminating 300ms tap <span class="fragment highlight-cloudfour">delays</span></li>
+							<li class="fragment"><code><a href="https://github.com/j-mcnally/cordova-statusTap">statusTap</a></code> plugin on iOS</li>
+							<li class="fragment">Various plugins for making third-party social authentication tolerable</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Lower-level concerns</h3>
-					  <p>Long-running native apps emphasize the need for</p>
+						<blockquote>My job is taking <span class="fragment highlight-cloudfour">high-level, slow</span> languages and making them work in <span class="fragment highlight-cloudfour">higher-level, slower</span> ways.</blockquote>
+						<p class="citation">Me, circa 2001</p>
+					</section>
+
+					<section>
+						<h3>Lower-level concerns</h3>
+						<p>Since then, JavaScript got a lot faster, but</p>
+					  <p class="fragment">Long-running native apps on mobile hardware emphasize the need for</p>
 					  <ul>
-					  	<li>Managing memory and watching for leaks</li>
-					  	<li>Retaining and managing state</li>
-					  	<li>Finicky QA of interface elements</li>
+					  	<li class="fragment">Being mindful to memory use; profiling your app</li>
+					  	<li class="fragment">Retaining and managing state without blowing things up</li>
+					  	<li class="fragment">Finicky QA of interface elements</li>
 					  </ul>
 					 </section>
 					<section>
@@ -425,18 +434,101 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 						<h3>Process, Components and Tools</h3>
 					</section>
 					<section>
-						<h3>Suddenly You Have to Care about a lot of Minutiae</h3>
-						<ul>
-							<li>Frameworks</li>
-							<li>Libraries</li>
-							<li>Config</li>
-							<li>Build</li>
-							<li>SDKs</li>
-						</ul>
+						<h3>Suddenly You Have to Care about a lot of minutiae</h3>
+					    <ul>
+								<li>Frameworks</li>
+								<li>Libraries</li>
+								<li>Config</li>
+								<li>Build</li>
+								<li>SDKs</li>
+					    </ul>
+					</section>
+					<section>
+						<h4 class="fragment shrink">Yawn.</h4>
 					</section>
 					<section>
 						<h3>Your Workflow Matters</h3>
+						<p class="fragment">Because you will lose your mind later if you don't get it right beforehand.</p>
 					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>For me, everything starts in the browser</h2>
+						<p class="fragment">Making things work in-browser where possible is so important to me that I will sometimes go out of my way to do it.</p>
+					</section>
+
+					<section>
+						<h4>But isn't that kind of pedantic?</h4>
+					</section>
+
+					<section>
+						<h3>But here are the benefits</h3>
+						<ul>
+							<li class="fragment"><span class="fragment highlight-cloudfour">Waaaaaaay</span> more convenient development workflow</li>
+							<li class="fragment">Keeps you honest about core web and standards</li>
+							<li class="fragment">Makes it easier for other teammates to contribute</li>
+							<li class="fragment">Find out later you need to add another platform? You'll be ahead</li>
+							<li class="fragment">But nothing holds a candle to the big one: <span class="fragment highlight-cloudfour">debug</span></li>
+					  </ul>
+					</section>
+
+					<section>
+						<h3>Maximize what you do in browser</h3>
+						<h4>Minimize what only works on device or in emulator</h4>
+					</section>
+
+					<section>
+						<h3>And then...</h3>
+						<p class="fragment">Feature-detect and enhance with PhoneGap, just like your mom raised you</p>
+					</section>
+
+					<section>
+						<h3>When to get the hell out of the browser and onto device</h3>
+						<p class="fragment">You cannot see or test these things effectively in your browser:</p>
+						<ul>
+							<li class="fragment">Anything that has anything to do with any kind of UI or movement whatsoever, and I <strong>mean that</strong>: <span class="fragment">animations,</span> <span class="fragment">transitions,</span> <span class="fragment">scrolling, </span> <span class="fragment"><em>anything</em> that involves how it looks, moves or interacts<span></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>So what am I getting at here?</h3>
+						<h5>(Having a bit of a think)</h5>
+					</section>
+
+					<section>
+						<h3>Ahem, Recapping</h3>
+						<ul>
+							<li class="fragment">Stay in the browser as much as you can</li>
+							<li class="fragment">Build: Keep it as simple as possible; output to <code>www</code> for PhoneGap</li>
+							<li class="fragment">Progressive PhoneGap Enhancement</li>
+							<li class="fragment">Test some stuff in emulator for speed</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>But in the end</h3>
+						<p class="fragment cloudfour-highlight">It doesn't "work" until it works on device</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Tools 'n Tips</h2>
+						<h4>Process, Components and Tools</h4>
+					</section>
+
+					<section>
+						<h3>Things I like</h3>
+						<ul>
+							<li class="fragment"><code>weinre</code>, or <code>debug.phonegap.com</code></li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+
 					<section>
 						<h3>Choosing your stack</h3>
 					</section>
