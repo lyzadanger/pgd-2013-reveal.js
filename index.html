@@ -81,6 +81,11 @@
 				</section>
 
 				<section>
+					<h2>My Grand Vision</h2>
+					<aside class="notes">Need to mention "consuming remote API"</aside>
+				</section>
+
+				<section>
 					<section>
 						<h4>Granted, there were some quiet voices in my head</h4>
 					</section>
@@ -143,15 +148,13 @@
 						<p>Like it or not, we're <span class="fragment highlight-cloudfour">on device</span> in a <span class="fragment highlight-cloudfour">native context</span>.</p>
 						<aside class="notes">On more than likely a <em>specific</em> device or devices. And because of that, we're beholden...</aside>
 					</section>
+
 					<section>
 						<h3>Process, Components and Tools</h3>
-						<ul>
-							<li class="fragment">A simple text editor won't get you all the way there</li>
-							<li class="fragment">You have to build this thing</li>
-							<li class="fragment">...and you have to decide what to build it <em>with</em></li>
-							<li class="fragment">Also, testing is hard</li>
-						</ul>
+						<p>Suddenly, your workflow matters. A trusty <span class="fragment highlight-cloudfour">text editor isn't enough</span> anymore, there's tons of <span class="fragment highlight-cloudfour">tedious detail</span> you need to monitor, and <span class="fragment highlight-cloudfour">testing is challenging</span>.
+						</p>
 					</section>
+
 					<section>
 						<h3>Complexity</h3>
 						<p>And these problems <span class="fragment highlight-cloudfour">compound</span> as your app grows.</p>
@@ -166,6 +169,12 @@
 
 				<section>
 					<h2>Defending yourself</h2>
+					<h4>Self-defense for those of us who think like the web</h4>
+				</section>
+
+				<section>
+					<h2>Defending Yourself</h2>
+					<h5><em>Category 1</em></h5>
 					<h3>Certain Web Concepts Fall Down a bit</h3>
 				</section>
 
@@ -197,7 +206,7 @@
 						<div class="fragment">
 							<h3>Welcome to JavaScript Applications</h3>
 							<p>This isn't exactly a brand-new concern.</p>
-							<p>But it is intensified in the native application context.</p>
+							<p>But it is <span class="fragment highlight-cloudfour">intensified</span> in the native application context.</p>
 							<p>And I urge you to sit down and give it a bit of a think.</p>
 						</div>
 					</section>
@@ -218,7 +227,7 @@
 
 					<section>
 						<h3>Think through the lifecycle</h3>
-						<p>Know your events and how the app will live in its context</p>
+						<p>Know your events and how the app will live in its <span class="fragment highlight-cloudfour">long-running</span> context</p>
 						<p>
 							<pre class="fragment"><code data-trim contenteditable>
 // Hold that thought
@@ -227,11 +236,16 @@ document.addEventListener("pause", hangOnForAWhile, false);
 document.addEventListener("resume", ohGodWhereWasI, false);
 						  </pre></code>
 					  </p>
+					  <aside class="notes">Think: When do my initialization events fire? When do I get to do a do over?</aside>
 					</section>
 
 					<section>
-						<h3>Differentiate between URL-addressable state history and routing</h3>
-						<p>You can push things into state history without actually routing.</p>
+						<h3>Pushing State</h3>
+						<ul>
+							<li class="fragment">Know your <code>history</code> object and what it can do</li>
+							<li class="fragment">Push URL-addressable state often</li>
+							<li class="fragment">but don't let webthink make you pattern behavior on discrete requests and routes</li>
+						</ul>
 						<aside class="notes">A compromise between URL-addressable places in state history and maintaining state for now</aside>
 					</section>
 
@@ -273,7 +287,7 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 					</section>
 
 					<section>
-						<h3>The Client Has to Wrangle Data</h3>
+						<h3>You'll be Wrangling Data</h3>
 						<ul>
 							<li>Caching</li>
 							<li>Synching</li>
@@ -302,7 +316,7 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 						<ul>
 							<li class="fragment">Synching local dirty data and doing a good job of it is a non-trivial problem</li>
 							<li class="fragment">I'm not smart enough to tackle it myself, so I use things like <code><a href="https://github.com/lucian1900/Backbone.dualStorage">backbone.dualStorage</a></code></li>
-							<li class="fragment">Make it behave RESTfully just like remote sync</li>
+							<li class="fragment">Make it behave RESTfully just like remote sync to keep the chaos minimized</li>
 							<li class="fragment">Nervous? You might consider readonly for local</li>
 						</ul>
 					</section>
@@ -351,6 +365,7 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 				<section>
 					<section>
 						<h2>Defending yourself</h2>
+						<h4><em>Category 2</em></h4>
 						<h3>Nuance and Context</h3>
 					</section>
 					<section>
@@ -368,8 +383,11 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 						</ul>
 					</section>
 					<section>
-						<h3>Interface</h3>
-						<p>Here is one random example of things you now need to know and care about:</p>
+						<h3>A potpourri of platform-specific details you now need to care about</h3>
+					</section>
+					<section>
+						<h3>Potpourri: Interface</h3>
+						<p>Here is <span class="fragment highlight-cloudfour">one random example</span> of things you now need to know and care about:</p>
 						<ul class="fragment">
 							<li>Keyboards
 								<ul>
@@ -385,14 +403,18 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 						</ul>
 					</section>
 					<section>
-						<h3>MOAR Interface</h3>
+						<h3>MOAR Interface Potpourri</h3>
 						<p>It is up to you, intrepid developer, to make sure that things behave acceptably.</p>
-						<p>e.g.</p>
+						<p class="fragment">e.g.</p>
 						<ul>
 							<li class="fragment"><code><a href="https://github.com/ftlabs/fastclick">fastclick.js</a></code> for eliminating 300ms tap <span class="fragment highlight-cloudfour">delays</span></li>
 							<li class="fragment"><code><a href="https://github.com/j-mcnally/cordova-statusTap">statusTap</a></code> plugin on iOS</li>
 							<li class="fragment">Various plugins for making third-party social authentication tolerable</li>
 						</ul>
+					</section>
+
+					<section>
+						<h4>The good news about potpourri is that <span class="fragment highlight-cloudfour">you can usually Google for it</span></h4>
 					</section>
 
 					<section>
@@ -410,15 +432,30 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 					  	<li class="fragment">Retaining and managing state without blowing things up</li>
 					  	<li class="fragment">Finicky QA of interface elements</li>
 					  </ul>
+					  <aside class="notes">Good news, you can do lots of profiling in the browser</aside>
 					 </section>
+
 					<section>
-						<h3>Putting it together</h3>
+						<h4>The bad news about design and architecure of your app is that</h4>
+						<h4><span class="fragment highlight-cloudfour">you can't usually Google for it</span></h4>
+					</section>
+
+					<section>
+						<h3>Nuance and Context: Putting it together</h3>
 						<ul>
-							<li class="fragment roll-in">Non-linear navigation</li>
-							<li class="fragment roll-in">Tap delay acceleration</li>
-							<li class="fragment roll-in">State management</li>
-							<li class="fragment roll-in">Memory management/care</li>
-							<li class="fragment roll-in">Platform-specific keyboard optimization</li>
+							<li class="fragment roll-in">Metaphorical Shifts
+								<ul>
+									<li class="fragment roll-in">Non-linear navigation</li>
+									<li class="fragment roll-in">State management</li>
+								</ul>
+							</li>
+							<li class="fragment roll-in">Interface Context
+								<ul>
+									<li class="fragment roll-in">Platform-specific optimization (keyboard)</li>
+									<li class="fragment roll-in">Tap delay acceleration</li>
+								</ul>
+							</li>
+							<li class="fragment roll-in">Memory Management and care</li>
 						</ul>
 					</section>
 
@@ -431,16 +468,19 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 				<section>
 					<section>
 						<h2>Defending Yourself</h2>
+						<h4><em>Category 3</em></h4>
 						<h3>Process, Components and Tools</h3>
 					</section>
 					<section>
-						<h3>Suddenly You Have to Care about a lot of minutiae</h3>
+						<h3>Suddenly  a lot of <span class="fragment highlight-cloudfour">minutiae</span></h3>
 					    <ul>
-								<li>Frameworks</li>
-								<li>Libraries</li>
-								<li>Config</li>
-								<li>Build</li>
-								<li>SDKs</li>
+								<li class="fragment">Frameworks</li>
+								<li class="fragment">Libraries</li>
+								<li class="fragment">Config</li>
+								<li class="fragment">Build Tools</li>
+								<li class="fragment">SDKs</li>
+								<li class="fragment">Distribution</li>
+								<li class="fragment">Dependencies</li>
 					    </ul>
 					</section>
 					<section>
@@ -449,6 +489,7 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 					<section>
 						<h3>Your Workflow Matters</h3>
 						<p class="fragment">Because you will lose your mind later if you don't get it right beforehand.</p>
+						<aside class="notes">If you're not detail-oriented, you'd better skill up a bit</aside>
 					</section>
 				</section>
 
@@ -496,67 +537,84 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 						<h5>(Having a bit of a think)</h5>
 					</section>
 
-					<section>
-						<h3>Ahem, Recapping</h3>
-						<ul>
-							<li class="fragment">Stay in the browser as much as you can</li>
-							<li class="fragment">Build: Keep it as simple as possible; output to <code>www</code> for PhoneGap</li>
-							<li class="fragment">Progressive PhoneGap Enhancement</li>
-							<li class="fragment">Test some stuff in emulator for speed</li>
-						</ul>
+					<section data-transition="none">
+						<h2>What comes first?</h2>
+						<h4>Here's my setup</h4>
+						<ol>
+							<li class="fragment">It still does all start with a text editor and a browser</li>
+							<li class="fragment">Local web server for dev tasks <em>(node, since you're gonna ask)</em></li>
+							<li class="fragment">Application framework and code (hackity hack)</li>
+							<li class="fragment">Web/Platform build tools</li>
+							<li class="fragment">PhoneGap build scripts (simple)</li>
+							<li class="fragment">Build-to-device</li>
+							<li class="fragment">Distribute</li>
+						</ol>
+						<aside class="notes">Update this slide to have some fanciness. Want to illustrate that steps 1-4 happen automatically and the product of 4 + 5 = master source</aside>
 					</section>
+
+				  <section data-transition="none">
+						<h2>Core Things</h2>
+						<h4>Quick 'n Dirty</h4>
+						<ol>
+							<li>It still does all start with a text editor and a browser</li>
+							<li>Local web server for dev tasks <em>(node, since you're gonna ask)</em></li>
+							<li>Application framework and code (hackity hack)</li>
+							<li>Web/Platform build tools</li>
+							<li class="fragment fade-out">PhoneGap build scripts (simple)</li>
+							<li class="fragment fade-out">Build-to-device</li>
+							<li class="fragment fade-out">Distribute</li>
+						</ol>
+						<aside class="notes">Update this slide to have some fanciness. Want to illustrate that steps 1-4 happen automatically and the product of 4 + 5 = master source. The first four are where I work, the last three are technicalities.</aside>
+				  </section>
+
+				</section>
+
+				<section>
+
 
 					<section>
 						<h3>But in the end</h3>
 						<p class="fragment cloudfour-highlight">It doesn't "work" until it works on device</p>
 					</section>
-				</section>
-
-				<section>
-					<section>
-						<h2>Tools 'n Tips</h2>
-						<h4>Process, Components and Tools</h4>
-					</section>
-
-					<section>
-						<h3>Things I like</h3>
-						<ul>
-							<li class="fragment"><code>weinre</code>, or <code>debug.phonegap.com</code></li>
-						</ul>
-					</section>
 
 				</section>
 
 				<section>
+					<section>
+						<h2>A bit of self-defense</h2>
+						<h4>Category 4</h4>
+						<h3>Summing it up</h3>
+					</section>
 
 					<section>
-						<h3>Choosing your stack</h3>
+						<h2>Those of you embarking on PhoneGap who think like web developers...</h2>
 					</section>
-					<section>
-						<h3>Testing is <em>All</em> Different</h3>
-						<ul>
-							<li>Testing and debug is light years easier in the browser</li>
-						</ul>
-					</section>
-				</section>
 
-				<section>
 					<section>
-						<h2>Complexity</h2>
+						<h3>Workflow first</h3>
 					</section>
+
 					<section>
-						<h3>Getting in front of things</h3>
+						<h3>Watch for Web Concepts that Apply Differently</h3>
 					</section>
+
 					<section>
 						<h3>Stay in the browser whenever you can</h3>
 					</section>
+
 					<section>
-						<h3>Apply Progressive Enhancement Ideals</h3>
+						<h3>Approach PhoneGap as Progressive Enhancement</h3>
 							<ul>
 								<li>Feature detection carries over to native applications</li>
 								<li>There isn't a clear line between browser and native</li>
+								<li>PhoneGap built on the core of web standards</li>
 							</ul>
 					</section>
+
+					<section>
+						<h3>But be aware of specific context</h3>
+					</section>
+
 					<section>
 						<h3>Assume nothing works until you see it on device</h3>
 					</section>
@@ -568,6 +626,7 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 
 				<section>
 					<a href="http://cloudfour.com"><img class="logo" src="assets/logo.svg" alt="Cloud Four"></a>
+					<aside class="notes">Need to add some credits</aside>
 				</section>
 
 			</div>
