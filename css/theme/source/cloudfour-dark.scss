@@ -126,6 +126,12 @@ $selectionColor: #fff;
   width: 40%;
 }
 
+.reveal [data-background] {
+  background-color: rgba(0,0,0,.5);
+  //@include radial-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.45));
+  //@include radial-gradient( rgba(85,90,95,1), rgba(28,30,32,.5) );
+}
+
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------

@@ -75,6 +75,9 @@
   margin-top: -4%;
   width: 40%; }
 
+.reveal [data-background] {
+  background-color: rgba(0, 0, 0, 0.5); }
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
