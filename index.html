@@ -170,9 +170,8 @@
 				</section>
 
 				<section>
-					<section>
-					  <h2>Where we* go wrong</h2>
-					  <p><small>* We = web developers</small></p>
+					<section data-background="assets/sad.jpg">
+					  <h2>Where we go wrong</h2>
 					</section>
 					<section>
 						<h3>Core Web Concepts</h3>
@@ -272,7 +271,7 @@
 						<aside class="notes">A compromise between URL-addressable places in state history and maintaining state for now</aside>
 					</section>
 
-					<section>
+					<section data-background="assets/lifecycle.jpg">
 						<h3>Think through the lifecycle</h3>
 						<p>Know your events and how the app will live in its <span class="fragment highlight-cloudfour">long-running</span> context</p>
 						<p>
@@ -337,7 +336,7 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 						<h3>Wrangling Data: Caching</h3>
 						<ul>
 							<li class="fragment">Default to keeping stuff locally</li>
-							<li class="fragment">But: be mindful of <code>localStorage</code> or other quotas</li>
+							<li class="fragment">I don't mind using <code>localStorage</code><span class="fragment">...<em>what?</em></span></li>
 							<li class="fragment">Don't <em>depend</em> on <code>localStorage</code></li>
 							<li class="fragment">Lots of stuff? You probably want to use <code><a href="https://developer.mozilla.org/en-US/docs/IndexedDB">IndexedDB</a></code> or something cool like that.</li>
 						</ul>
@@ -356,16 +355,15 @@ document.addEventListener("resume", ohGodWhereWasI, false);
 
 					<section>
 						<h3>Wrangling Data: Offline Mode</h3>
-						<p>Finally a bit of good news: build your data wrangling carefully<span class="fragment" data-fragment-index="3">*</span>, and offline mode can follow naturally.</p>
-						<p class="fragment" data-fragment-index="1">If you want a bit more control:</p>
-						<pre class="fragment" data-fragment-index="2"><code data-trim contenteditable>
+						<p>Finally a bit of good news: build your data wrangling carefully, and offline mode can follow naturally.</p>
+						<p class="fragment">WRT PhoneGap proper, If you want a bit more control:</p>
+						<pre class="fragment"><code data-trim contenteditable>
 // Hold that thought
 document.addEventListener("offline", nobodyIsAnswering, false);
 // Oh, we're all talking again!
 document.addEventListener("online", hiThereHeresWhatChanged, false);
 						 </pre></code>
 					  </p>
-					  <p class="fragment" data-fragment-index="4"><small>* Remember what I said about designing client storage patterns after RESTful remote sync?</small></p>
 					 </section>
 				</section>
 
@@ -543,8 +541,7 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 							<li class="fragment"><span class="fragment highlight-cloudfour">Waaaaaaay</span> more convenient development workflow</li>
 							<li class="fragment">Keeps you honest about core web and standards</li>
 							<li class="fragment">Makes it easier for other teammates to contribute</li>
-							<li class="fragment">Find out later you need to add another platform? You'll be ahead</li>
-							<li class="fragment">But nothing holds a candle to the big one: <span class="fragment highlight-cloudfour">debug</span></li>
+							<li class="fragment">I absolutely hate doing <span class="fragment highlight-cloudfour">debug</span> on device</li>
 					  </ul>
 					</section>
 
@@ -557,7 +554,7 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 						<h3>And then...</h3>
 						<p class="fragment">Feature-detect and enhance with PhoneGap, just like your mom raised you</p>
 					</section>
-
+<!--
 					<section>
 						<h3>When to get the hell out of the browser and onto device</h3>
 						<p class="fragment">You cannot see or test these things effectively in your browser:</p>
@@ -565,20 +562,18 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 							<li class="fragment">Anything that has anything to do with any kind of UI or movement whatsoever, and I <strong>mean that</strong>: <span class="fragment">animations,</span> <span class="fragment">transitions,</span> <span class="fragment">scrolling, </span> <span class="fragment"><em>anything</em> that involves how it looks, moves or interacts<span></li>
 						</ul>
 					</section>
-
+-->
 					<section data-transition="none">
 						<h2>What comes first?</h2>
 						<h4>Here's my setup</h4>
 						<ol>
 							<li class="fragment">It still does all start with a text editor and a browser</li>
+						  <li class="fragment">Application framework and code (hackity hack)</li>
 							<li class="fragment">Local web server for dev tasks <em>(node, since you're gonna ask)</em></li>
-							<li class="fragment">Application framework and code (hackity hack)</li>
-							<li class="fragment">Web/Platform build tools</li>
 							<li class="fragment">PhoneGap build scripts (simple)</li>
 							<li class="fragment">Build-to-device</li>
 							<li class="fragment">Distribute</li>
 						</ol>
-						<aside class="notes">Update this slide to have some fanciness. Want to illustrate that steps 1-4 happen automatically and the product of 4 + 5 = master source</aside>
 					</section>
 
 				  <section data-transition="none">
@@ -586,19 +581,17 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 						<h4>Quick 'n Dirty</h4>
 						<ol>
 							<li>It still does all start with a text editor and a browser</li>
+						  <li>Application framework and code (hackity hack)</li>
 							<li>Local web server for dev tasks <em>(node, since you're gonna ask)</em></li>
-							<li>Application framework and code (hackity hack)</li>
-							<li>Web/Platform build tools</li>
 							<li class="fragment fade-out">PhoneGap build scripts (simple)</li>
 							<li class="fragment fade-out">Build-to-device</li>
 							<li class="fragment fade-out">Distribute</li>
 						</ol>
-						<aside class="notes">Update this slide to have some fanciness. Want to illustrate that steps 1-4 happen automatically and the product of 4 + 5 = master source. The first four are where I work, the last three are technicalities.</aside>
 				  </section>
 
 				  <section>
 				  	<h3>Wash, rinse, repeat</h3>
-				  	<p class="fragment">Steps <strong>1-4</strong> happen every time I modify a file in my working area.</p>
+				  	<p class="fragment">Steps <strong>1-3</strong> happen every time I modify a file in my working area.</p>
 				  	<p class="fragment">Classic hack, save, reload pattern.</p>
 				  	<p class="fragment">Well, that's nice and familiar.</p>
 				  </section>
@@ -664,9 +657,10 @@ document.addEventListener("online", hiThereHeresWhatChanged, false);
 
 				<section>
 					<p><a href="http://cloudfour.com"><img class="logo" src="assets/logo.svg" alt="Cloud Four"></a></p>
+					<p>&nbsp;</p>
 					<h5>Lyza Danger Gardner / @lyzadanger</h5>
-					<p><small>Designed with <a href="https://github.com/hakimel/reveal.js">Reveal.js</a> with lovely help from <a href="http://twitter.com/tylersticka">@tylersticka</a> on the Cloud Four theme.</small></p>
-					<p><small>All photos taken by me except: <em>Our Focus is Mobile</em> and <em>Gold Star</em> (Lisa Teso); <em>Yawn</em> (Luke Wroblewski)</small></p>
+					<p><small>Download this presentation at <a href="https://github.com/lyzadanger/pgd-2013-reveal.js">https://github.com/lyzadanger/pgd-2013-reveal.js</a></small></p>
+					<p><small>Designed with <a href="https://github.com/hakimel/reveal.js">Reveal.js</a> with lovely help from <a href="http://twitter.com/tylersticka">@tylersticka</a> on the Cloud Four theme. All photos taken by me except: <em>Our Focus is Mobile</em> and <em>Gold Star</em> (Lisa Teso); <em>Yawn</em> (Luke Wroblewski)</small></p>
 				</section>
 
 			</div>
